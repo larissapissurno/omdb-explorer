@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
-import { Title, Form, Repositories, Error } from './styles';
+import { Title, Form, Movies, Error } from './styles';
 
 interface Movie {
   imdbID: string;
@@ -57,8 +57,8 @@ const Dashboard: React.FC = () => {
 
       {inputError && <Error>{inputError}</Error>}
 
-      <Repositories>
-        {movies.map((movie) => (
+      <Movies>
+        {movies && movies.map((movie) => (
           <Link
             to={`/movies/${movie.imdbID}`}
             key={movie.imdbID}
@@ -72,7 +72,7 @@ const Dashboard: React.FC = () => {
             </div>
           </Link>
         ))}
-      </Repositories>
+      </Movies>
     </>
   );
 };

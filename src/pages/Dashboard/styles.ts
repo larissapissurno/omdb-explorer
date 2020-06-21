@@ -63,7 +63,7 @@ export const Error = styled.span`
   margin-top: 8px;
 `;
 
-export const Repositories = styled.div`
+export const Movies = styled.div`
   margin-top: 80px;
   display: flex;
   flex-direction: row;
@@ -83,15 +83,15 @@ export const Repositories = styled.div`
     transition: transform 0.2s;
     margin-bottom: 10px;
     margin-right: 10px;
+    width: 215px;
 
     &:hover {
       transform: translateY(-10px);
     }
 
     img {
-      width: 200px;
-      height: 250px;
-      /* border-radius: 50%; */
+      width: auto;
+      height: 200px;
     }
 
     div {
