@@ -1,0 +1,80 @@
+import React, { useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../services/api';
+
+import { Title, Form, Repositories, Error } from './styles';
+
+interface Movie {
+  imdbID: string;
+  Title: string;
+  Year: string;
+  Poster: string;
+}
+
+interface ResponseDTO {
+  Search: Movie[];
+  totalResults: string;
+}
+
+const Dashboard: React.FC = () => {
+  const [newMovie, setNewMovie] = useState('');
+  const [inputError, setInputError] = useState('');
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  async function handleSearchMovie(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    try {
+      if (!newMovie) {
+        setInputError('This field is required.');
+        return;
+      }
+
+      const response = await api.get<ResponseDTO>(`?apikey=524d16a3&s=${newMovie}&type=movie`);
+      const { Search: movies } = response.data;
+
+      setMovies(movies);
+
+      setInputError('');
+    } catch (error) {
+      setInputError('Error in searching for this movie.');
+    }
+  }
+
+  return (
+    <>
+      <Title>Find your Favorite Movie</Title>
+
+      <Form hasError={!!inputError} onSubmit={handleSearchMovie}>
+        <input
+          value={newMovie}
+          onChange={(event) => setNewMovie(event.target.value)}
+          placeholder="Inform movie name"
+        />
+        <button type="submit">Search</button>
+      </Form>
+
+      {inputError && <Error>{inputError}</Error>}
+
+      <Repositories>
+        {movies.map((movie) => (
+          <Link
+            to={`/movies/${movie.imdbID}`}
+            key={movie.imdbID}
+          >
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+            />
+            <div>
+              <strong>{`${movie.Title} (${movie.Year})`}</strong>
+            </div>
+          </Link>
+        ))}
+      </Repositories>
+    </>
+  );
+};
+
+export default Dashboard;
