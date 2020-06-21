@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import Rating from 'react-rating';
 import { BsStarFill, BsStar, BsClock, BsChevronLeft } from 'react-icons/bs';
-import { Button } from '@material-ui/core';
 
 import api from '../../services/api';
 
@@ -12,9 +11,9 @@ import {
   Genre,
   HeaderMainData,
   HeaderDescription,
-  Content,
-  ButtonBack
+  ButtonBack,
 } from './styles';
+import InfoTabs from '../../components/InfoTabs';
 
 interface MovieParams {
   imdbID: string;
@@ -26,8 +25,10 @@ interface Movie {
   Genre: string;
   Poster: string;
   Actors: string;
+  Director: string;
   Plot: string;
   Runtime: string;
+  Ratings: any[];
   imdbRating: string;
 }
 const Movie: React.FC = () => {
@@ -44,7 +45,7 @@ const Movie: React.FC = () => {
       setMovie(movie);
 
       if (movie.imdbRating) {
-        setRating(+movie.imdbRating * 5 / 10);
+        setRating((+movie.imdbRating * 5) / 10);
       }
 
       if (movie.Genre) {
@@ -55,8 +56,11 @@ const Movie: React.FC = () => {
 
   return (
     <>
-      <ButtonBack color="primary" onClick={() => window.history.back()}><BsChevronLeft />Go back</ButtonBack>
-      {movie &&
+      <ButtonBack color="primary" onClick={() => window.history.back()}>
+        <BsChevronLeft />
+        Go back
+      </ButtonBack>
+      {movie && (
         <Container>
           <Header>
             <HeaderMainData>
@@ -76,7 +80,8 @@ const Movie: React.FC = () => {
                 </span>
 
                 <p>
-                  {genres.length && genres.map((genre => (<Genre>{genre}</Genre>)))}
+                  {genres.length &&
+                    genres.map((genre) => <Genre key={genre}>{genre}</Genre>)}
                 </p>
               </div>
             </HeaderMainData>
@@ -84,14 +89,15 @@ const Movie: React.FC = () => {
             <HeaderDescription>{movie.Plot}</HeaderDescription>
           </Header>
 
-          <Content>
-
-          </Content>
-
+          <InfoTabs
+            actors={movie.Actors.split(', ')}
+            directors={movie.Director.split(', ')}
+            ratings={movie.Ratings}
+          />
         </Container>
-      }
+      )}
     </>
-  )
-}
+  );
+};
 
 export default Movie;
