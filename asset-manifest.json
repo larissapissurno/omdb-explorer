@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.bbc79ede.chunk.js",
-    "main.js.map": "/static/js/main.bbc79ede.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.9e834237.js",
-    "runtime-main.js.map": "/static/js/runtime-main.9e834237.js.map",
-    "static/js/2.94b79086.chunk.js": "/static/js/2.94b79086.chunk.js",
-    "static/js/2.94b79086.chunk.js.map": "/static/js/2.94b79086.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.54bf9b7bd16924d4fa01b7a8e04e1d0e.js": "/precache-manifest.54bf9b7bd16924d4fa01b7a8e04e1d0e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.94b79086.chunk.js.LICENSE.txt": "/static/js/2.94b79086.chunk.js.LICENSE.txt"
+    "main.js": "/omdb-explorer/static/js/main.bbc79ede.chunk.js",
+    "main.js.map": "/omdb-explorer/static/js/main.bbc79ede.chunk.js.map",
+    "runtime-main.js": "/omdb-explorer/static/js/runtime-main.eb53dbee.js",
+    "runtime-main.js.map": "/omdb-explorer/static/js/runtime-main.eb53dbee.js.map",
+    "static/js/2.be5e4f9b.chunk.js": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js",
+    "static/js/2.be5e4f9b.chunk.js.map": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js.map",
+    "index.html": "/omdb-explorer/index.html",
+    "precache-manifest.b1698f9afd0918c8a63478345298ef49.js": "/omdb-explorer/precache-manifest.b1698f9afd0918c8a63478345298ef49.js",
+    "service-worker.js": "/omdb-explorer/service-worker.js",
+    "static/js/2.be5e4f9b.chunk.js.LICENSE.txt": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9e834237.js",
-    "static/js/2.94b79086.chunk.js",
+    "static/js/runtime-main.eb53dbee.js",
+    "static/js/2.be5e4f9b.chunk.js",
     "static/js/main.bbc79ede.chunk.js"
   ]
 }
