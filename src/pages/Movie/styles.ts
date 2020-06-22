@@ -8,26 +8,31 @@ export const Container = styled.div`
   padding: 24px;
   min-height: calc(100vh - 150px);
   margin-top: 40px;
+
+  button {
+    float: right;
+  }
 `;
 
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
 
-  p, span {
+  p,
+  span {
     color: #aeaeae;
   }
 `;
 
 export const HeaderMainData = styled.div`
-  display: flex;  
+  display: flex;
   img {
     border-radius: 5px;
     margin-top: -70px;
     height: 170px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(204,204,204,1);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(204,204,204,1);
-    box-shadow: 0px 0px 15px 0px rgba(204,204,204,1);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(204, 204, 204, 1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(204, 204, 204, 1);
+    box-shadow: 0px 0px 15px 0px rgba(204, 204, 204, 1);
   }
 
   div {
@@ -42,7 +47,7 @@ export const HeaderMainData = styled.div`
     }
 
     svg:first-child {
-      color: #EFBE46;
+      color: #efbe46;
     }
 
     svg:nth-child(2n) {
@@ -69,13 +74,12 @@ export const Genre = styled.span`
   margin-right: 10px;
 `;
 
-export const Content = styled.div`
-
-`;
+export const Content = styled.div``;
 
 export const ButtonBack = withStyles({
   root: {
     float: 'right',
-    marginTop: '-10px',
-  }
+    marginTop: '-60px',
+    marginRight: '20px',
+  },
 })(Button);

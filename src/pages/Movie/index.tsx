@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import Rating from 'react-rating';
 import { BsStarFill, BsStar, BsClock, BsChevronLeft } from 'react-icons/bs';
+import Fab from '@material-ui/core/Fab';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import api from '../../services/api';
 
@@ -20,6 +22,7 @@ interface MovieParams {
 }
 
 interface Movie {
+  imdbID: string;
   Title: string;
   Year: string;
   Genre: string;
@@ -31,8 +34,10 @@ interface Movie {
   Ratings: any[];
   imdbRating: string;
 }
+
 const Movie: React.FC = () => {
   const [movie, setMovie] = useState<Movie>();
+  const [favoriteMovie, setFavoriteMovie] = useState(false);
   const [rating, setRating] = useState(0);
   const [genres, setGenres] = useState<string[]>([]);
 
@@ -51,17 +56,36 @@ const Movie: React.FC = () => {
       if (movie.Genre) {
         setGenres(movie.Genre.split(', '));
       }
+
+      const favoriteMovies = getFavoriteMovies().map(
+        (movie: Movie) => movie.imdbID,
+      );
+      setFavoriteMovie(favoriteMovies.includes(params.imdbID));
     });
   }, [params.imdbID]);
 
+  function handleClickFavorite() {
+    const favorite = !favoriteMovie;
+    setFavoriteMovie(favorite);
+
+    if (favorite) {
+      addFavoriteMovie(movie);
+    } else {
+      removeFavoriteMovie(params.imdbID);
+    }
+  }
+
   return (
     <>
-      <ButtonBack color="primary" onClick={() => window.history.back()}>
-        <BsChevronLeft />
-        Go back
-      </ButtonBack>
       {movie && (
         <Container>
+          <Fab
+            aria-label="like"
+            color={favoriteMovie ? 'secondary' : 'default'}
+            onClick={handleClickFavorite}
+          >
+            <FavoriteIcon />
+          </Fab>
           <Header>
             <HeaderMainData>
               <img src={movie.Poster} alt={movie.Title}></img>
@@ -96,8 +120,57 @@ const Movie: React.FC = () => {
           />
         </Container>
       )}
+
+      <ButtonBack
+        variant="contained"
+        color="primary"
+        onClick={() => window.history.back()}
+      >
+        <BsChevronLeft />
+        Go back
+      </ButtonBack>
     </>
   );
 };
+
+function addFavoriteMovie(favoriteMovie: Movie | undefined) {
+  if (!favoriteMovie) {
+    return;
+  }
+
+  const favoriteMovies = getFavoriteMovies();
+
+  if (favoriteMovies.find((movie) => movie.imdbID === favoriteMovie.imdbID)) {
+    return;
+  }
+
+  favoriteMovies.push(favoriteMovie);
+
+  window.localStorage.setItem(
+    '@omdb-explorer:favorite-movies',
+    JSON.stringify(favoriteMovies),
+  );
+}
+
+function getFavoriteMovies(): Movie[] {
+  const storagedFavoriteMovies =
+    window.localStorage.getItem('@omdb-explorer:favorite-movies') || '';
+  return storagedFavoriteMovies ? JSON.parse(storagedFavoriteMovies) : [];
+}
+
+function removeFavoriteMovie(favoriteMovieId: string) {
+  const favoriteMovies = getFavoriteMovies();
+
+  const index = favoriteMovies.findIndex(
+    (movie) => movie.imdbID === favoriteMovieId,
+  );
+
+  favoriteMovies.splice(index, 1);
+
+  window.localStorage.setItem(
+    '@omdb-explorer:favorite-movies',
+    JSON.stringify(favoriteMovies),
+  );
+}
 
 export default Movie;

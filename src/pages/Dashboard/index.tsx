@@ -31,7 +31,9 @@ const Dashboard: React.FC = () => {
         return;
       }
 
-      const response = await api.get<ResponseDTO>(`?apikey=524d16a3&s=${newMovie}&type=movie`);
+      const response = await api.get<ResponseDTO>(
+        `?apikey=524d16a3&s=${newMovie}&type=movie`,
+      );
       const { Search: movies } = response.data;
 
       setMovies(movies);
@@ -50,7 +52,7 @@ const Dashboard: React.FC = () => {
         <input
           value={newMovie}
           onChange={(event) => setNewMovie(event.target.value)}
-          placeholder="Inform movie name"
+          placeholder="Inform a movie name"
         />
         <button type="submit">Search</button>
       </Form>
@@ -58,20 +60,15 @@ const Dashboard: React.FC = () => {
       {inputError && <Error>{inputError}</Error>}
 
       <Movies>
-        {movies && movies.map((movie) => (
-          <Link
-            to={`/movies/${movie.imdbID}`}
-            key={movie.imdbID}
-          >
-            <img
-              src={movie.Poster}
-              alt={movie.Title}
-            />
-            <div>
-              <strong>{`${movie.Title} (${movie.Year})`}</strong>
-            </div>
-          </Link>
-        ))}
+        {movies &&
+          movies.map((movie) => (
+            <Link to={`/movies/${movie.imdbID}`} key={movie.imdbID}>
+              <img src={movie.Poster} alt={movie.Title} />
+              <div>
+                <strong>{`${movie.Title} (${movie.Year})`}</strong>
+              </div>
+            </Link>
+          ))}
       </Movies>
     </>
   );

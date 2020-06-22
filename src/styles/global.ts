@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+const mobile = window.matchMedia('(max-width: 600px)').matches;
 
 export default createGlobalStyle`
   * {
@@ -18,7 +19,16 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: calc(100vw - 300px);
+    ${
+      mobile
+        ? css`
+            max-width: 100%;
+          `
+        : css`
+            max-width: calc(100vw - 300px);
+          `
+    }
+    
     margin: 0 auto;
     padding: 40px 20px;
   }
