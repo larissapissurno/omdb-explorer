@@ -13,7 +13,7 @@ const Routes: React.FC = () => (
       component={Movie}
     />
     <Route
-      path={process.env.PUBLIC_URL + '/favorite-movies'}
+      path={process.env.PUBLIC_URL + '/favoritemovies'}
       component={FavoriteMovies}
     />
   </Switch>
