@@ -7,9 +7,15 @@ import FavoriteMovies from '../pages/FavoriteMovies';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={Dashboard} />
-    <Route path="/movies/:imdbID" component={Movie} />
-    <Route path="/favorite-movies" component={FavoriteMovies} />
+    <Route path={process.env.PUBLIC_URL + '/'} exact component={Dashboard} />
+    <Route
+      path={process.env.PUBLIC_URL + '/movies/:imdbID'}
+      component={Movie}
+    />
+    <Route
+      path={process.env.PUBLIC_URL + '/favorite-movies'}
+      component={FavoriteMovies}
+    />
   </Switch>
 );
 

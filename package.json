@@ -2,6 +2,7 @@
   "name": "omdb-explorer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://larissapissurno.github.io/omdb-explorer",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
@@ -25,6 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -60,6 +63,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "gh-pages": "^3.1.0"
   }
 }

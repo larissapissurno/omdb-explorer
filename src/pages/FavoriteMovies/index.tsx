@@ -27,14 +27,19 @@ const FavoriteMovies: React.FC = () => {
         <>
           <h4>You don't have any favorite movies yet :(</h4>
           <br />
-          <Link to="/">Let's find your favorite movies!</Link>
+          <Link to={process.env.PUBLIC_URL + '/'}>
+            Let's find your favorite movies!
+          </Link>
         </>
       )}
 
       <Movies>
         {movies &&
           movies.map((movie) => (
-            <Link to={`/movies/${movie.imdbID}`} key={movie.imdbID}>
+            <Link
+              to={`${process.env.PUBLIC_URL}/movies/${movie.imdbID}`}
+              key={movie.imdbID}
+            >
               <img src={movie.Poster} alt={movie.Title} />
               <div>
                 <strong>{`${movie.Title} (${movie.Year})`}</strong>

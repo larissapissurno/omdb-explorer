@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
     <>
       <Title>Find your Favorite Movie</Title>
 
-      <MyFavsButton href="/favorite-movies">
+      <MyFavsButton href={`${process.env.PUBLIC_URL}/favorite-movies`}>
         <FavoriteIcon color="secondary" />
         <span>My Favs</span>
         <ArrowRightAlt />
@@ -70,7 +70,10 @@ const Dashboard: React.FC = () => {
       <Movies>
         {movies &&
           movies.map((movie) => (
-            <Link to={`/movies/${movie.imdbID}`} key={movie.imdbID}>
+            <Link
+              to={`${process.env.PUBLIC_URL}/movies/${movie.imdbID}`}
+              key={movie.imdbID}
+            >
               <img src={movie.Poster} alt={movie.Title} />
               <div>
                 <strong>{`${movie.Title} (${movie.Year})`}</strong>
