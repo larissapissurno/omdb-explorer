@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/omdb-explorer/static/js/main.bfac1497.chunk.js",
-    "main.js.map": "/omdb-explorer/static/js/main.bfac1497.chunk.js.map",
+    "main.js": "/omdb-explorer/static/js/main.41a5f417.chunk.js",
+    "main.js.map": "/omdb-explorer/static/js/main.41a5f417.chunk.js.map",
     "runtime-main.js": "/omdb-explorer/static/js/runtime-main.eb53dbee.js",
     "runtime-main.js.map": "/omdb-explorer/static/js/runtime-main.eb53dbee.js.map",
     "static/js/2.be5e4f9b.chunk.js": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js",
     "static/js/2.be5e4f9b.chunk.js.map": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js.map",
     "index.html": "/omdb-explorer/index.html",
-    "precache-manifest.19e474795b38f1571a25d7f0e172a409.js": "/omdb-explorer/precache-manifest.19e474795b38f1571a25d7f0e172a409.js",
+    "precache-manifest.4993fd0132644b484fdee1b89b9f013a.js": "/omdb-explorer/precache-manifest.4993fd0132644b484fdee1b89b9f013a.js",
     "service-worker.js": "/omdb-explorer/service-worker.js",
     "static/js/2.be5e4f9b.chunk.js.LICENSE.txt": "/omdb-explorer/static/js/2.be5e4f9b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb53dbee.js",
     "static/js/2.be5e4f9b.chunk.js",
-    "static/js/main.bfac1497.chunk.js"
+    "static/js/main.41a5f417.chunk.js"
   ]
 }
