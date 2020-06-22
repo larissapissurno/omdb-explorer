@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 interface FormProps {
   hasError: boolean;
@@ -10,6 +12,7 @@ export const Title = styled.h1`
   color: #3a3a3a;
   max-width: 100%;
   line-height: 56px;
+  display: inline-block;
 
   margin-top: 80px;
 `;
@@ -31,8 +34,8 @@ export const Form = styled.form<FormProps>`
     border-right: 0;
 
     ${(props) =>
-    props.hasError &&
-    css`
+      props.hasError &&
+      css`
         border-color: #c53030;
       `}
 
@@ -116,3 +119,12 @@ export const Movies = styled.div`
     }
   }
 `;
+
+export const MyFavsButton = withStyles({
+  root: {
+    float: 'right',
+    marginTop: 100,
+    minWidth: 150,
+    justifyContent: 'space-between',
+  },
+})(Button);

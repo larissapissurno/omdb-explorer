@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import Rating from 'react-rating';
-import { BsStarFill, BsStar, BsClock, BsChevronLeft } from 'react-icons/bs';
+import { BsStarFill, BsStar, BsClock } from 'react-icons/bs';
 import Fab from '@material-ui/core/Fab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
@@ -13,9 +13,9 @@ import {
   Genre,
   HeaderMainData,
   HeaderDescription,
-  ButtonBack,
 } from './styles';
 import InfoTabs from '../../components/InfoTabs';
+import ButtonBack from '../../components/ButtonBack';
 
 interface MovieParams {
   imdbID: string;
@@ -121,14 +121,7 @@ const Movie: React.FC = () => {
         </Container>
       )}
 
-      <ButtonBack
-        variant="contained"
-        color="primary"
-        onClick={() => window.history.back()}
-      >
-        <BsChevronLeft />
-        Go back
-      </ButtonBack>
+      <ButtonBack />
     </>
   );
 };

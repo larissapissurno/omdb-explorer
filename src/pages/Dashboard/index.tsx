@@ -1,8 +1,10 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 
-import { Title, Form, Movies, Error } from './styles';
+import { Title, Form, Movies, Error, MyFavsButton } from './styles';
 
 interface Movie {
   imdbID: string;
@@ -47,6 +49,12 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Title>Find your Favorite Movie</Title>
+
+      <MyFavsButton href="/favorite-movies">
+        <FavoriteIcon color="secondary" />
+        <span>My Favs</span>
+        <ArrowRightAlt />
+      </MyFavsButton>
 
       <Form hasError={!!inputError} onSubmit={handleSearchMovie}>
         <input

@@ -73,13 +73,3 @@ export const Genre = styled.span`
   text-transform: uppercase;
   margin-right: 10px;
 `;
-
-export const Content = styled.div``;
-
-export const ButtonBack = withStyles({
-  root: {
-    float: 'right',
-    marginTop: '-60px',
-    marginRight: '20px',
-  },
-})(Button);
