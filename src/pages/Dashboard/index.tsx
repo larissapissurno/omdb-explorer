@@ -50,11 +50,13 @@ const Dashboard: React.FC = () => {
     <>
       <Title>Find your Favorite Movie</Title>
 
-      <MyFavsButton href={`${process.env.PUBLIC_URL}/favoritemovies`}>
-        <FavoriteIcon color="secondary" />
-        <span>My Favs</span>
-        <ArrowRightAlt />
-      </MyFavsButton>
+      <Link to={`${process.env.PUBLIC_URL}/favorite-movies`}>
+        <MyFavsButton>
+          <FavoriteIcon color="secondary" />
+          <span>My Favs</span>
+          <ArrowRightAlt />
+        </MyFavsButton>
+      </Link>
 
       <Form hasError={!!inputError} onSubmit={handleSearchMovie}>
         <input

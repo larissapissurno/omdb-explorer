@@ -6,8 +6,24 @@ import {
   wait,
   waitForDomChange,
 } from '@testing-library/react';
+import api from '../../services/api';
 
 describe('Dashboard Page', () => {
+  let spy: jest.SpyInstance<
+    Promise<unknown>,
+    [string, any?, (import('axios').AxiosRequestConfig | undefined)?]
+  >;
+
+  beforeEach(() => {
+    spy = jest
+      .spyOn(api, 'post')
+      .mockImplementation(() => Promise.resolve(true));
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
   it('should be able to search', async () => {
     const { getByPlaceholderText, getByText } = render(<Dashboard />);
 
