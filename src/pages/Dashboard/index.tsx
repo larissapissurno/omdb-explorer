@@ -15,6 +15,7 @@ interface Movie {
 
 interface ResponseDTO {
   Search: Movie[];
+  Error: string;
   totalResults: string;
 }
 
@@ -33,10 +34,21 @@ const Dashboard: React.FC = () => {
         return;
       }
 
+      if (newMovie.length < 3) {
+        setInputError('A minimum of 3 characters is required.');
+        return;
+      }
+
       const response = await api.get<ResponseDTO>(
         `?apikey=524d16a3&s=${newMovie}&type=movie`,
       );
-      const { Search: movies } = response.data;
+      const { Search: movies, Error } = response.data;
+
+      if (!!Error) {
+        setInputError(Error);
+        setMovies([]);
+        return;
+      }
 
       setMovies(movies);
 
@@ -62,7 +74,7 @@ const Dashboard: React.FC = () => {
         <input
           value={newMovie}
           onChange={(event) => setNewMovie(event.target.value)}
-          placeholder="Inform a movie name"
+          placeholder="Inform your favorite movie name"
         />
         <button type="submit">Search</button>
       </Form>
