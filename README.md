@@ -35,6 +35,7 @@ SPA desenvolvida em ReactJs para consumir a [OMDb API](http://www.omdbapi.com/)
   - ***Material UI***
   - ***Styled Components***
   - ***Axios***
+  - ***Jest***
 
 ## Pré-requisitos
 #### [Node.js](https://nodejs.org/) v10+
